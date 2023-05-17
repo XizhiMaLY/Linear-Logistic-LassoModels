@@ -1,4 +1,5 @@
 > **Warning**
+>
 > For the minimization, we are using Adagradient descent without mini-batch, meaning that **our loss**
 > **function will increase** with the increase of data volumn. So **please select the comparable learning**
 > **rate eta**, I recommend to try from eta=1. Do not use the default cause it's barely training.
