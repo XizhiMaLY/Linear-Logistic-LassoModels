@@ -23,7 +23,7 @@
 
 
 ## Example
-```
+```python
 In [1]: from LinerR.linreg import *
    ...: from sklearn.datasets import load_wine, load_iris
    ...: from sklearn.model_selection import train_test_split
@@ -69,7 +69,7 @@ array([[3.],
 
 
 ## Example
-```
+```python
 from LinerR.linreg import *
 import numpy as np
 import pandas as pd
@@ -115,7 +115,7 @@ correct rate: 1.0
 |            | predict(X) Predict logistic model  |
 
 ## Example
-```
+```python
 def synthetic_data():
     """
     X:[0, 10]
