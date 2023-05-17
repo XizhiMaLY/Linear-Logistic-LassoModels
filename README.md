@@ -22,7 +22,7 @@
 
 
 
-## Examples
+## Example
 ```
 In [1]: from LinerR.linreg import *
    ...: from sklearn.datasets import load_wine, load_iris
@@ -68,7 +68,7 @@ array([[3.],
 |            | predict(X) Predict logistic model                                                                                     |
 
 
-## Examples
+## Example
 ```
 from LinerR.linreg import *
 import numpy as np
@@ -102,4 +102,51 @@ del model
 Out:
 Your y is of shape (100,), we create a new one of (100, 1) for your model.
 correct rate: 1.0
+```
+
+# Ridge Linear Regression
+|            |                                                                                                                       |
+|------------|-----------------------------------------------------------------------------------------------------------------------|
+| Attributes | eta: the learning rate η of Adagradient descent, default=0.00001                                                      |
+|            | lambda: the regularization rate of L2(Ridge) regularization |
+|            | max_iter: max iter rounds for Adagradient descent, default=1000                                                       |
+|            | B: 𝛃, coefs of model, β₀, β₁, ..., βₚ                                                                                 |
+| Methods    | fit(X, y) Fit logistic model   |
+|            | predict(X) Predict logistic model  |
+
+## Example
+```
+def synthetic_data():
+    """
+    X:[0, 10]
+    y = X + standard normal distribution, [0, 10]
+    """
+    n = 1000
+    df = pd.DataFrame()
+    df['x'] = np.linspace(0, 10, num=n)
+    df['y'] = df['x'] + np.random.normal(0, 1, size=n)
+    X = df['x'].values
+    y = df['y'].values
+    X = X.reshape(-1, 1)
+    y = y.reshape(-1, 1)
+    return X, y
+X, y = synthetic_data()
+
+"""
+You can still choose not to normalize the data, 
+BUT YOU WILL NEED TO AT LEAST CENTER THE DATA!
+This is because the package is estimating coefficient without
+intercept, thus you must center the predictor variables!
+"""
+X = X-np.mean(X)
+
+# normalize(X)
+model = RidgeRegression621(max_iter=10000_000, eta=1, lmbda=200)
+model.fit(X, y)
+y_pred = model.predict(X)
+r2 = r2_score(y, y_pred)
+r2
+
+Out:
+0.8960437764010043
 ```
