@@ -4,6 +4,11 @@
 > **function will increase** with the increase of data volumn. So **please select the comparable learning**
 > **rate eta**, I recommend to try from eta=1. Do not use the default cause it's barely training.
 
+> **Warning**
+>
+> For the ridge regression, you must center the prediter variables for the package will calculate coefficients
+> without intercept and then add y_mean as intercept. You can find more about this in **GetStarted.ipynb**
+
 
 # Linear Regression
 |            |                                                             |
@@ -64,7 +69,7 @@ array([[3.],
 
 
 ## Examples
-```python
+```
 from LinerR.linreg import *
 import numpy as np
 import pandas as pd
